@@ -1,0 +1,47 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="demo" onmouseover="changeContent()" onmouseout="changeto()">Hello World</h1>
+    <p>Welcome to the world of DOM, hope you like it</p>
+    <button onclick="togglecontent()">Change</button>
+    <button onclick="changeColor()">ChangeColor</button>
+    <script>
+        function changeContent(){
+            document.getElementById('demo').innerHTML = "Powered by DOM";
+        }
+        function changeto(){
+            document.getElementById('demo').innerHTML = "Hello World";
+        }
+        var x =2;
+        function togglecontent(){
+            x+=1;
+            if(x%2!=0){
+                document.getElementById('demo').innerHTML = "Powered by DOM";
+            }
+            else{
+                document.getElementById('demo').innerHTML = "Hello World";
+            }
+        }
+        var y=2;
+        function changeColor(){
+            y+=1;
+            if(y%2!=0){
+                document.body.style.backgroundColor = 'blue';
+                document.body.style.color = 'white';
+            }
+            else{
+                document.body.style.backgroundColor = 'white';
+            document.body.style.color = 'black';
+            }
+            
+        }
+        
+    </script>
+</body>
+</html>

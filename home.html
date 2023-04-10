@@ -1,0 +1,148 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #one{
+            height: 5em;
+            background-color: red;
+        }
+        .level2{
+            display: flex;
+            height: 10em;
+        }
+        #two{
+            width: 20%;
+            background-color: orange;
+        }
+        #three{
+            background-color: yellow;
+            width: 80%;
+        }
+        #four{
+            background-color: green;
+            height: 5em;
+        }
+    </style>
+</head>
+<body>
+    <div id="one"></div>
+    <div class="level2">
+        <div id="two"></div>
+        <div id="three"></div>
+    </div>
+    <div id="four"></div>
+    <!-- red move sto green
+    green to yellow
+yellow to orange
+orange to red  RGYO
+id1 -> red
+id2 -> orange
+id3->yellow
+id4-> green-->
+
+<!-- On previous
+green to red
+red to orange
+orange to yellow
+yellow to green -->
+
+<button onclick="previousone()" >Previous</button>
+<button onclick="nextOne()">Next</button>
+
+<script>
+    
+    var array = ["green", "yellow", "orange", "red"]
+    var i = 0;
+    function changetonext(){
+        
+        if(i==0){
+        document.getElementById('one').style.backgroundColor = array[2];
+        document.getElementById('two').style.backgroundColor = array[1];
+        document.getElementById('three').style.backgroundColor = array[0];
+        document.getElementById('four').style.backgroundColor = array[3];
+        }
+        if(i==1){
+        document.getElementById('one').style.backgroundColor = array[1];
+        document.getElementById('two').style.backgroundColor = array[0];
+        document.getElementById('three').style.backgroundColor = array[3];
+        document.getElementById('four').style.backgroundColor = array[2];
+        }
+        if(i==2){
+            //r-g, g-y, y-o, o-r  ["green", "yellow", "orange", "red"]
+        document.getElementById('one').style.backgroundColor = array[0];
+        document.getElementById('two').style.backgroundColor = array[3];
+        document.getElementById('three').style.backgroundColor = array[2];
+        document.getElementById('four').style.backgroundColor = array[1];
+        }
+        if(i==3){
+            document.getElementById('one').style.backgroundColor = array[3];
+        document.getElementById('two').style.backgroundColor = array[2];
+        document.getElementById('three').style.backgroundColor = array[1];
+        document.getElementById('four').style.backgroundColor = array[ 0];
+        }
+        i = i+1;
+        if(i==4){
+            i=0
+        }
+    }
+
+    function changetoprevious(){
+        if(i==3){
+            document.getElementById('one').style.backgroundColor = array[1];
+        document.getElementById('two').style.backgroundColor = array[0];
+        document.getElementById('three').style.backgroundColor = array[3];
+        document.getElementById('four').style.backgroundColor = array[2];
+        }
+        if(i==0){
+            document.getElementById('one').style.backgroundColor = array[0];
+        document.getElementById('two').style.backgroundColor = array[3];
+        document.getElementById('three').style.backgroundColor = array[2];
+        document.getElementById('four').style.backgroundColor = array[1];
+        }
+        if(i==2){
+            document.getElementById('one').style.backgroundColor = array[2];
+        document.getElementById('two').style.backgroundColor = array[1];
+        document.getElementById('three').style.backgroundColor = array[0];
+        document.getElementById('four').style.backgroundColor = array[3];
+        }
+        if(i==1){
+            document.getElementById('one').style.backgroundColor = array[3];
+        document.getElementById('two').style.backgroundColor = array[2];
+        document.getElementById('three').style.backgroundColor = array[1];
+        document.getElementById('four').style.backgroundColor = array[ 0];
+        }
+        i = i -1;
+        if(i<0){
+            i=3;
+        }
+    }
+    //one => red orange yellow green
+    //two =>orange yellow green red
+    // three=> yellow green red orange
+    //four => green red orange yellow  [red orange yellow green]
+    var x=0;
+    var uae = ["red", "orange", "yellow", "green"]
+    function nextOne(){
+        document.getElementById('one').style.backgroundColor = uae[(x+1)%4];
+        document.getElementById('two').style.backgroundColor = uae[(x+2)%4];
+        document.getElementById('three').style.backgroundColor = uae[(x+3)%4];
+        document.getElementById('four').style.backgroundColor = uae[x%4];
+        x = x+1;
+    }
+    function previousone(){
+        document.getElementById('one').style.backgroundColor = uae[(x+1)%4];
+        document.getElementById('two').style.backgroundColor = uae[(x+2)%4];
+        document.getElementById('three').style.backgroundColor = uae[(x+3)%4];
+        document.getElementById('four').style.backgroundColor = uae[x%4];
+        x = x-1;
+        if(x<0){
+            x=3;
+        }
+    }
+</script>
+</body>
+</html>
